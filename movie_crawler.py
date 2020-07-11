@@ -5,13 +5,13 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 
 bot = telegram.Bot(token = '1391450532:AAH649LkqFFd-EsLfcVv8NOs0uxX8hXNBSA')
-url = 'http://www.cgv.co.kr/common/showtimes/iframeTheater.aspx?areacode=01&theatercode=0013&date=20200725'
+url = 'http://www.cgv.co.kr/common/showtimes/iframeTheater.aspx?areacode=01&theatercode=0013&date=20200725' #CGV url입니다.
 
 
 def job_function():
     html = requests.get(url)
     soup = BeautifulSoup(html.text, 'html.parser')
-    imax = soup.select_one('span.imax')
+    imax = soup.select_one('span.imax') ##imax가 있는지 확인
 
     if (imax):
         imax = imax.find_parent('div', class_='col-times')
